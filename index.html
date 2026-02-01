@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Mission Countdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero-bg">
+
+	<div class="stars"></div>
+   	<div class="twinkling"></div>
+
+        <div class="content">
+                       
+            <h2>WE'RE ABOUT TO <span>MEET IN</span></h2>
+
+            <div class="timer">
+		<div class="unit">
+                    <span id="days"></span>
+                    <label>DAYS</label>
+                </div>
+                <div class="sep">:</div>
+                <div class="unit">
+                    <span id="hours"></span>
+                    <label>HOURS</label>
+                </div>
+                <div class="sep">:</div>
+                <div class="unit">
+                    <span id="minutes"></span>
+                    <label>MINUTES</label>
+                </div>
+                <div class="sep">:</div>
+                <div class="unit">
+                    <span id="seconds"></span>
+                    <label>SECONDS</label>
+                </div>
+            </div>
+
+            <button class="btn-live">CAN'T WAIT <strong> DOCTOR SAHAB? </strong></button>
+        </div>
+
+	<div class="stars"></div>
+    	<div class="twinkling"></div>
+    
+    	<div class="content">
+        	</div>
+    </div>
+	
+
+    <script>
+
+	// Set the date we're counting down to (e.g., April 4, 2026, 00:00:00)
+	const countdownDate = new Date("Apr 4, 2026 00:00:00").getTime();
+
+	// Update the countdown every 1 second
+	const x = setInterval(function() {
+
+    	// Get today's date and time
+    	const now = new Date().getTime();
+
+    	// Find the distance between now and the countdown date
+    	const distance = countdownDate - now;
+
+    	// Time calculations for days, hours, minutes and seconds
+    	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    	const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    	const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    	// Display the result in the corresponding elements
+    	document.getElementById("days").innerHTML = days;
+    	document.getElementById("hours").innerHTML = hours;
+    	document.getElementById("minutes").innerHTML = minutes;
+    	document.getElementById("seconds").innerHTML = seconds;
+
+    	},1000);
+
+	const liveBtn = document.querySelector('.btn-live');
+
+	if (liveBtn) {
+    	liveBtn.addEventListener('click', releaseHearts);
+	}
+
+	function releaseHearts() {
+    	for (let i = 0; i < 100; i++) {
+        	createHeartBalloon();
+    	}
+	}
+
+	function createHeartBalloon() {
+    	const heart = document.createElement('div');
+    	heart.classList.add('heart-balloon');
+    
+    	// Random horizontal start across screen width
+    	const startX = Math.random() * window.innerWidth;
+    	heart.style.left = startX + "px";
+    	heart.style.top = (window.innerHeight + 100) + "px";
+    
+    	// Random Galaxy Colors
+    	const colors = ['#ff4d6d', '#ff758c', '#c9184a', '#ffb3c1', '#ffffff'];
+    	heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    	// Random Size
+    	const size = Math.random() * 30 + 40;
+    	heart.style.width = size + "px";
+    	heart.style.height = size + "px";
+
+    	// Set custom drift for the CSS animation
+    	const drift = (Math.random() - 0.5) * 400;
+    	heart.style.setProperty('--drift', drift + "px");
+    
+    	// Random speed
+    	const duration = Math.random() * 20 + 12; 
+    	heart.style.animationDuration = duration + "s";
+
+    	document.body.appendChild(heart);
+
+    	// Clean up memory
+    	setTimeout(() => {
+        	heart.remove();
+    	}, duration * 1000);
+	}
+	
+	
+    </script>
+
+</body>
+</html>
