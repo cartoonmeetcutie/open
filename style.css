@@ -27,6 +27,15 @@ body, html {
     align-items: center;
     justify-content: center;
     background-color: #05010a; /* Dark base color */
+
+    display: flex;
+    flex-direction: column; /* Stacks everything vertically */
+    align-items: center;    /* Horizontal centering */
+    justify-content: center; /* Vertical centering */
+    text-align: center;
+    min-height: 100vh;
+
+
 }
 
 /* 1. LAYER 1: Rapid Flicker Stars */
@@ -101,9 +110,11 @@ body, html {
     position: relative;
     z-index: 10; 
     text-align: center;
-    background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, transparent 70%);
-    padding: 40px;
-    border-radius: 50%;
+   background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, transparent 0%);
+    padding: 20px; 
+    border-radius: 0; /* Removes the "elliptical" shape */
+    width: 100%;
+    max-width: 600px; /* Keeps it from getting too wide on desktop */
 }
 
 /* This creates a fading glow effect to simulate twinkling */
@@ -263,9 +274,6 @@ h2 span {
 
 /* Mobile Devices */
 @media (max-width: 600px) {
-    .content {
-        padding: 15px;
-    }
 
     h2 {
         font-size: 1.2rem;
@@ -273,22 +281,32 @@ h2 span {
         line-height: 1.4;
     }
 
+   /* 1. Fix the container width */
+    .content {
+        width: 100vw;
+        padding: 10px;
+        margin: 0;
+    }
+
+    /* 2. Shrink the timer so it fits inside the screen */
     .timer {
-        flex-wrap: wrap; /* Allows units to wrap to a second line */
-        gap: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Tighten gap for mobile */
+        width: 100%;
     }
 
     .unit span {
-        font-size: 2.4rem; /* Drastically reduced for mobile */
+        font-size: 3rem; /* Small enough to fit 4 across on a phone */
     }
 
     .unit label {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
+        font-size: 0.7rem;
     }
 
+    /* 3. Hide the colons (:) if they push the numbers off-center */
     .sep {
-        display: none; /* Hide colons on mobile to save space */
+        display: none; 
     }
 
     .btn-live {
