@@ -220,8 +220,8 @@ h2 span {
 @media (hover: hover) {
     .btn-live:hover {
         background: rgba(255, 255, 255, 0.25);
-        transform: scale(1.1);
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        transform: scale(0.95);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 }
 
