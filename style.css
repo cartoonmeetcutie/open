@@ -323,8 +323,16 @@ h2 span {
     .btn-live {
         padding: 15px 30px;
         font-size: 1rem;
-        width: 100%; /* Full width button for easier tapping */
+        width: 75%; /* Full width button for easier tapping */
     }
+
+    .btn-live:active {
+    	transform: scale(0.95); /* Shrinks slightly when pressed */
+    	background: rgba(255, 255, 255, 0.3);
+    	transition: transform 0.1s;
+    }
+
+
 }
 
 @media (max-width: 600px) {
