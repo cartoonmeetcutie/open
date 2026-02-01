@@ -48,6 +48,9 @@
         	</div>
     </div>
 	
+    <audio id="bg-music">
+    	<source src="thousand-years.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
 
@@ -78,6 +81,7 @@
     	},1000);
 
 	const liveBtn = document.querySelector('.btn-live');
+	const music = document.getElementById('bg-music');
 
 	if (liveBtn) {
     	liveBtn.addEventListener('click', releaseHearts);
@@ -90,6 +94,14 @@
 	}
 
 	function createHeartBalloon() {
+
+
+	if (music) {
+        music.play().catch(error => {
+            console.log("Audio play blocked by browser. This is normal until the user interacts.", error);
+        });
+    }	
+
     	const heart = document.createElement('div');
     	heart.classList.add('heart-balloon');
     
