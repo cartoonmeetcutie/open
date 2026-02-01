@@ -11,7 +11,7 @@ body, html {
     background-color: #000;
     font-family: 'Segoe UI', sans-serif;
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* 2. Background Image Layer */
@@ -21,6 +21,8 @@ body, html {
     width: 100%;
     background: url('background.png') no-repeat center bottom;
     background-size: cover;
+    background-attachment: fixed; /* Keeps stars steady while scrolling */
+    padding: 20px; /* Prevents text from hitting the edges */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,5 +244,63 @@ h2 span {
     100% {
         transform: translateY(-130vh) translateX(var(--drift)) rotate(0deg);
         opacity: 0;
+    }
+}
+
+/* Tablet and Small Screens */
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 1.8rem;
+        letter-spacing: 6px;
+    }
+    .unit span {
+        font-size: 6rem;
+    }
+    .timer {
+        gap: 20px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+    .content {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        letter-spacing: 4px;
+        line-height: 1.4;
+    }
+
+    .timer {
+        flex-wrap: wrap; /* Allows units to wrap to a second line */
+        gap: 15px;
+    }
+
+    .unit span {
+        font-size: 3.5rem; /* Drastically reduced for mobile */
+    }
+
+    .unit label {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    .sep {
+        display: none; /* Hide colons on mobile to save space */
+    }
+
+    .btn-live {
+        padding: 15px 30px;
+        font-size: 1rem;
+        width: 100%; /* Full width button for easier tapping */
+    }
+}
+
+@media (max-width: 600px) {
+    .stars, .twinkling {
+        /* Reduce shadow size for smaller screens to keep them crisp */
+        transform: scale(0.8);
     }
 }
